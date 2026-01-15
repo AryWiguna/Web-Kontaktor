@@ -103,22 +103,31 @@
             color: #0A192F;
             background-color: rgba(10, 25, 47, 0.05);
         }
+        /* Style Aktif yang Konsisten */
         .filter-btn.active {
             background-color: #0A192F !important;
             color: #ffffff !important;
             border-color: #0A192F !important;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+        /* Mencegah konflik warna saat active di-hover/klik */
+        .filter-btn.active:hover, 
+        .filter-btn.active:active, 
+        .filter-btn.active:focus {
+            background-color: #0A192F !important;
+            color: #ffffff !important;
+            border-color: #0A192F !important;
+        }
+
         .filter-btn:active { transform: scale(0.95); }
         .filter-btn:focus { outline: none; }
 
-        /* --- Testimonial Animation (New) --- */
+        /* --- Testimonial Animation --- */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Class ini akan ditambahkan via JS saat scroll */
         .animate-on-scroll {
             opacity: 0; /* Hidden secara default */
         }
@@ -193,7 +202,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-fixed bg-no-repeat text-center px-4 pt-20 md:pt-0">
+    <!-- PERBAIKAN: bg-scroll (untuk mobile) md:bg-fixed (untuk desktop) -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-scroll md:bg-fixed bg-no-repeat text-center px-4 pt-20 md:pt-0">
         <div class="relative z-10 max-w-4xl mx-auto" data-aos="fade-up">
             <p class="text-tjg-orange font-bold tracking-[0.2em] mb-4 uppercase text-xs md:text-sm lg:text-base animate-pulse">
                 Professional General Contractor
@@ -326,7 +336,7 @@
 
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Project Items (Same as before) -->
+                <!-- Project Items -->
                 <div class="project-item group relative overflow-hidden rounded-sm shadow-md" data-category="residential">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Modern House" class="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-tjg-navy/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
