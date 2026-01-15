@@ -125,6 +125,54 @@
         .testimonial-card:hover::before {
             left: 100%;
         }
+
+        /* Filter Button Styles */
+        .filter-btn {
+            position: relative;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .filter-btn:focus {
+            outline: none;
+        }
+
+        .filter-btn:active,
+        .filter-btn:focus,
+        .filter-btn:visited {
+            color: inherit !important;
+        }
+
+        .filter-btn.active {
+            background-color: #0A192F !important;
+            color: white !important;
+            border-color: #0A192F !important;
+            -webkit-text-fill-color: white !important;
+        }
+
+        .filter-btn.active:hover,
+        .filter-btn.active:focus,
+        .filter-btn.active:active,
+        .filter-btn.active:visited {
+            color: white !important;
+            background-color: #0A192F !important;
+            border-color: #0A192F !important;
+            -webkit-text-fill-color: white !important;
+        }
+
+        /* Force white text on active state with maximum specificity */
+        button.filter-btn.active {
+            color: white !important;
+            -webkit-text-fill-color: white !important;
+        }
+
+        button.filter-btn.active:active,
+        button.filter-btn.active:focus,
+        button.filter-btn.active:visited {
+            color: white !important;
+            -webkit-text-fill-color: white !important;
+        }
     </style>
 </head>
 <body class="font-body text-slate-700 bg-gray-50 selection:bg-tjg-orange selection:text-white overflow-x-hidden">
@@ -767,6 +815,7 @@
                 // Add active class to clicked button
                 btn.classList.remove('text-gray-600', 'border-gray-300');
                 btn.classList.add('bg-tjg-navy', 'text-white', 'border-tjg-navy');
+                btn.classList.add('active');
 
                 const filterValue = btn.getAttribute('data-filter');
 
@@ -779,6 +828,15 @@
                         item.classList.remove('show');
                     }
                 });
+            });
+
+            // Prevent text color change on mousedown/mouseup
+            btn.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+            });
+
+            btn.addEventListener('mouseup', (e) => {
+                btn.click();
             });
         });
     </script>
